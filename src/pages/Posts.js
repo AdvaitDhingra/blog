@@ -2,9 +2,9 @@ import Post from '../components/Post'
 import fire from '../components/Firebase'
 import { useEffect, useState } from 'react'
 
-export default function Posts() {
+export default function Posts(props) {
 
-    const [posts, SetPosts] = useState([{title: "Test", content: "Test"}])
+    const [posts, SetPosts] = useState([...props.posts])
 
     useEffect(() => {
         fire.firestore().collection('posts').onSnapshot(snapshot => {
@@ -12,9 +12,8 @@ export default function Posts() {
                 posts.push(post.data())
             })
             SetPosts(posts)
-            console.log(posts)
         })
-    })
+    }, [])
 
     return(
         <div style = {{padding: "20px 20px"}}>

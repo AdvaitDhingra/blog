@@ -1,5 +1,4 @@
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
 
 export default function Post(props) {
     return(

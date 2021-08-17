@@ -8,9 +8,23 @@ import About from './About';
 import CreatePostPage from './CreatePostPage';
 
 
+
 import fire from '../components/Firebase'
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const [posts, SetPosts] = useState([])
+
+  useEffect(() => {
+    fire.firestore().collection('posts').onSnapshot(snapshot => {
+      snapshot.forEach(post => {
+          posts.push(post.data())
+      })
+      SetPosts(posts)
+  })
+  }, [])
+
   return (
     <BrowserRouter>
     <div className="App">
@@ -18,7 +32,7 @@ function App() {
     </div>
     <Switch>
       <Route component = {Home} path = "/" exact/>
-      <Route component = {Posts} path = "/posts"/>
+      <Route  path = "/posts"><Posts posts = {posts}/></Route>
       <Route component = {About} path = "/about"/>
       <Route component = {CreatePostPage} path = "/admin"/>
     </Switch>
