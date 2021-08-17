@@ -1,3 +1,5 @@
+import Posts from "./Posts";
+
 export default function Home() {
     return(
         <div style = {{
@@ -5,6 +7,7 @@ export default function Home() {
         }}>
             <div className = "containter">
                 <h1 className = "welcomeText">Welcome to my Blog</h1>
+                <Posts/>
             </div>
             
         </div>

@@ -44,7 +44,9 @@ export default function CreatePostPage() {
                 <div>
                 <h1>Create a Post</h1>
                     <input type = "text" placeholder = "Title" onChange = {e => setTitle(e.target.value)}/>
-                    <input type = "text" placeholder = "Content" onChange = {e => setContent(e.target.value)}/>
+                    <input style = {{
+                        height: "200px"
+                    }} type = "text" placeholder = "Content" onChange = {e => setContent(e.target.value)}/>
                     <button onClick = {post}>Sumbit</button>
                     </div>
             </div>) : (<div style = {{padding: "20px 20px"}}>
